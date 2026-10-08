@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StyleSense — BMI + Skin Tone Style Guide</title>
+    <meta
+      name="description"
+      content="Discover personalized color palettes, Indian ethnic and contemporary outfits, jewelry, footwear, and hairstyle ideas based on BMI and skin tone. 100% private and browser-based."
+    />
+
+    <!-- Social / OpenGraph -->
+    <meta property="og:title" content="StyleSense — BMI + Skin Tone Style Guide" />
+    <meta
+      property="og:description"
+      content="Discover colors & outfits that feel like you. 100% browser-based • No account • No tracking."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#FAF8F5" />
+
+    <!-- PWA Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Site Header -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a href="#welcome" class="brand-link" id="navBrandLink" aria-label="StyleSense Home">
+          <div class="brand-symbol">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <span class="brand-name">StyleSense</span>
+        </a>
+
+        <div class="header-actions">
+          <span class="privacy-pill" title="Private and local to your device">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            100% Browser-Only
+          </span>
+
+          <button id="btnThemeToggle" class="btn-icon" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <!-- Moon / Sun SVG swapped by JS -->
+            <svg id="themeIconSun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container" role="main">
+      <!-- Interactive Progress Indicator (shown during steps) -->
+      <nav id="stepsTracker" class="steps-tracker" style="display: none;" aria-label="Form Progress">
+        <div class="step-indicator active" id="stepIndicator1">
+          <span class="step-circle">1</span>
+          <span class="step-label">Basics</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" id="stepIndicator2">
+          <span class="step-circle">2</span>
+          <span class="step-label">Tone & Undertone</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" id="stepIndicator3">
+          <span class="step-circle">3</span>
+          <span class="step-label">Your Guide</span>
+        </div>
+      </nav>
+
+      <!-- SCREEN 1: Welcome / Hero -->
+      <section id="screenWelcome" class="screen-view active">
+        <div class="hero-section">
+          <span class="hero-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            BMI + Skin Tone Style Guide
+          </span>
+          <h1 class="hero-title">Discover colors &amp; styles that feel like you.</h1>
+          <p class="hero-subtitle">
+            A private, browser-only style guide for exploring colors, outfits, Indian traditional wear, and personal styling expression.
+          </p>
+
+          <div class="hero-actions">
+            <button id="btnStartGuide" class="btn btn-primary">
+              Start My Style Guide
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button id="btnHowItWorks" class="btn btn-secondary">
+              How it works
+            </button>
+          </div>
+
+          <div class="feature-cards-grid">
+            <div class="feature-card">
+              <div class="feature-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"></path>
+                </svg>
+              </div>
+              <h3>Your Colors</h3>
+              <p>Curated palettes of flattering best tones, accents, and thoughtful pairings matched to your unique undertone.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+                </svg>
+              </div>
+              <h3>Your Outfits</h3>
+              <p>Occasion-ready casual, formal, party, and Indian ethnic ideas tailored for your comfort and styling aesthetic.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+              </div>
+              <h3>Your Style Guide</h3>
+              <p>Hairstyles, hair color ideas, jewelry, bags, and traditional footwear in a printable personal style card.</p>
+            </div>
+          </div>
+
+          <div class="privacy-banner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>
+              <strong>100% browser-based • No account • No tracking</strong><br />
+              Your information stays in your browser. StyleSense does not upload your data.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: Step 1 — Basic Information -->
+      <section id="screenStep1" class="screen-view">
+        <div class="form-step-container">
+          <div class="editorial-card">
+            <div class="card-header">
+              <span class="card-step-tag">Step 1 of 2</span>
+              <h2>Tell us a little about you</h2>
+              <p>We use this purely to determine gentle silhouette proportions and comfortable fit ideas.</p>
+            </div>
+
+            <form id="formStep1" novalidate>
+              <!-- Age -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label for="inputAge" class="form-label">Age</label>
+                </div>
+                <div class="input-with-affix">
+                  <input
+                    type="number"
+                    id="inputAge"
+                    class="input-field"
+                    placeholder="e.g. 25"
+                    min="10"
+                    max="120"
+                    required
+                  />
+                  <span class="input-affix">years</span>
+                </div>
+                <div id="errorAge" class="form-error-msg" style="display: none;"></div>
+              </div>
+
+              <!-- Styling Preference -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label">Styling Preference</label>
+                </div>
+                <div class="options-stack">
+                  <label class="option-radio-card selected" for="prefFeminine">
+                    <input type="radio" name="stylingPref" id="prefFeminine" value="feminine" checked />
+                    <span class="custom-radio-indicator"></span>
+                    <div class="option-radio-card-content">
+                      <h4>Feminine styling</h4>
+                      <p>Sarees, lehengas, anarkalis, dresses, soft tailoring, and flowing silhouettes.</p>
+                    </div>
+                  </label>
+
+                  <label class="option-radio-card" for="prefMasculine">
+                    <input type="radio" name="stylingPref" id="prefMasculine" value="masculine" />
+                    <span class="custom-radio-indicator"></span>
+                    <div class="option-radio-card-content">
+                      <h4>Masculine styling</h4>
+                      <p>Kurta-pajamas, Nehru jackets, Bandhgalas, sherwanis, and structured menswear.</p>
+                    </div>
+                  </label>
+
+                  <label class="option-radio-card" for="prefAndrogynous">
+                    <input type="radio" name="stylingPref" id="prefAndrogynous" value="androgynous" />
+                    <span class="custom-radio-indicator"></span>
+                    <div class="option-radio-card-content">
+                      <h4>Androgynous / non-binary styling</h4>
+                      <p>Gender-neutral kurtas, relaxed wide trousers, modern drapes, and fluid layers.</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Height -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label" for="inputHeightCm">Height</label>
+                  <div class="unit-toggle-group">
+                    <button type="button" class="unit-toggle-btn active" id="btnHeightUnitCm">Centimeters (cm)</button>
+                    <button type="button" class="unit-toggle-btn" id="btnHeightUnitFt">Feet &amp; Inches</button>
+                  </div>
+                </div>
+
+                <!-- Metric Height (cm) -->
+                <div id="heightMetricContainer">
+                  <div class="input-with-affix">
+                    <input
+                      type="number"
+                      id="inputHeightCm"
+                      class="input-field"
+                      placeholder="e.g. 165"
+                      min="90"
+                      max="250"
+                      step="0.5"
+                    />
+                    <span class="input-affix">cm</span>
+                  </div>
+                </div>
+
+                <!-- Imperial Height (ft + in) -->
+                <div id="heightImperialContainer" class="input-split-row" style="display: none;">
+                  <div class="input-with-affix">
+                    <input
+                      type="number"
+                      id="inputHeightFt"
+                      class="input-field"
+                      placeholder="Feet (e.g. 5)"
+                      min="3"
+                      max="8"
+                    />
+                    <span class="input-affix">ft</span>
+                  </div>
+                  <div class="input-with-affix">
+                    <input
+                      type="number"
+                      id="inputHeightIn"
+                      class="input-field"
+                      placeholder="Inches (e.g. 6)"
+                      min="0"
+                      max="11"
+                    />
+                    <span class="input-affix">in</span>
+                  </div>
+                </div>
+                <div id="errorHeight" class="form-error-msg" style="display: none;"></div>
+              </div>
+
+              <!-- Weight -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label" for="inputWeight">Weight</label>
+                  <div class="unit-toggle-group">
+                    <button type="button" class="unit-toggle-btn active" id="btnWeightUnitKg">Kilograms (kg)</button>
+                    <button type="button" class="unit-toggle-btn" id="btnWeightUnitLb">Pounds (lb)</button>
+                  </div>
+                </div>
+
+                <div class="input-with-affix">
+                  <input
+                    type="number"
+                    id="inputWeight"
+                    class="input-field"
+                    placeholder="e.g. 62"
+                    min="25"
+                    max="300"
+                    step="0.5"
+                  />
+                  <span id="weightAffix" class="input-affix">kg</span>
+                </div>
+                <div id="errorWeight" class="form-error-msg" style="display: none;"></div>
+              </div>
+
+              <div class="form-nav-row">
+                <button type="button" class="btn btn-outline" id="btnBackToWelcome">
+                  ← Back
+                </button>
+                <button type="submit" class="btn btn-primary" id="btnContinueStep1">
+                  Continue →
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: Step 2 — Skin Tone & Undertone -->
+      <section id="screenStep2" class="screen-view">
+        <div class="form-step-container">
+          <div class="editorial-card">
+            <div class="card-header">
+              <span class="card-step-tag">Step 2 of 2</span>
+              <h2>Skin Tone &amp; Undertone</h2>
+              <p>Choose the swatch closest to your natural skin tone and your harmonious undertone.</p>
+            </div>
+
+            <!-- Skin Tone Swatches (7 Options) -->
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label">1. Choose closest skin tone</label>
+              </div>
+              <div class="swatch-grid-7" id="skinToneSelector">
+                <!-- Injected via JavaScript from data.js -->
+              </div>
+              <div id="errorSkinTone" class="form-error-msg" style="display: none;"></div>
+            </div>
+
+            <!-- Undertone Selector (3 Choices) -->
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label">2. Select your undertone</label>
+              </div>
+              <div class="undertone-grid" id="undertoneSelector">
+                <div class="undertone-card selected" data-undertone="warm">
+                  <span class="undertone-icon">☀️</span>
+                  <h4>Warm</h4>
+                  <p>Gold often feels harmonious.</p>
+                </div>
+                <div class="undertone-card" data-undertone="cool">
+                  <span class="undertone-icon">❄️</span>
+                  <h4>Cool</h4>
+                  <p>Silver often feels harmonious.</p>
+                </div>
+                <div class="undertone-card" data-undertone="neutral">
+                  <span class="undertone-icon">◐</span>
+                  <h4>Neutral</h4>
+                  <p>Both can work well.</p>
+                </div>
+              </div>
+
+              <!-- Collapsible Helper -->
+              <div class="accordion-helper" id="undertoneHelper">
+                <button type="button" class="accordion-trigger" id="undertoneHelperToggle">
+                  <span>Not sure about your undertone?</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="accordion-content">
+                  <p>A few everyday clues to help you identify your natural undertone:</p>
+                  <ul>
+                    <li><strong>Vein color:</strong> If your wrist veins appear green or olive in natural daylight → <em>Warm</em>. If they appear blue or violet → <em>Cool</em>. If you see a subtle mix of both → <em>Neutral</em>.</li>
+                    <li><strong>Jewelry shortcut:</strong> If yellow gold brings out warmth in your face → <em>Warm</em>. If pure silver illuminates your features → <em>Cool</em>. If you wear both effortlessly → <em>Neutral</em>.</li>
+                    <li><strong>White fabric test:</strong> If warm ivory feels softer near your face than bright optic white, you likely lean warm.</li>
+                  </ul>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                    * This is only a styling shortcut, not a scientific test. Wear what makes you feel happiest and most confident!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-nav-row">
+              <button type="button" class="btn btn-outline" id="btnBackToStep1">
+                ← Back
+              </button>
+              <button type="button" class="btn btn-primary" id="btnGenerateResults">
+                Generate My Style Guide ✨
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: Step 3 — Results Dashboard -->
+      <section id="screenStep3" class="screen-view">
+        <div class="results-dashboard">
+          <!-- Header Banner -->
+          <div class="results-header-card">
+            <span class="results-eyebrow">Personalized Editorial Dossier</span>
+            <h1>Your Personal Style Guide</h1>
+            <p class="results-summary-subtitle" id="resultsSubheading">Medium tone · Warm undertone</p>
+
+            <div class="results-top-actions">
+              <button id="btnPrintStyleCard" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                Download My Style Card
+              </button>
+              <button id="btnEditInputs" class="btn btn-secondary">
+                Adjust Inputs
+              </button>
+              <button id="btnRestartApp" class="btn btn-outline">
+                Start Over
+              </button>
+            </div>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="metrics-summary-grid">
+            <!-- BMI Metric -->
+            <div class="metric-card">
+              <div>
+                <span class="metric-card-label">BMI Screening</span>
+                <div class="metric-card-value" id="metricBmiValue">--</div>
+                <div class="metric-card-desc" id="metricBmiCategory">Normal range</div>
+              </div>
+              <div class="bmi-visual-box" id="metricBmiVisualBox">
+                <div class="bmi-gauge-track">
+                  <div class="bmi-gauge-pin" id="metricBmiPin" style="left: 45%;"></div>
+                </div>
+                <div class="bmi-labels-row">
+                  <span>18.5</span>
+                  <span>25.0</span>
+                  <span>30.0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skin Tone Metric -->
+            <div class="metric-card">
+              <div>
+                <span class="metric-card-label">Skin Tone</span>
+                <div class="metric-card-value" id="metricSkinToneName">Medium</div>
+                <div class="metric-card-desc" id="metricSkinToneDesc">Wheatish &amp; honey-toned</div>
+              </div>
+              <div style="margin-top: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span id="metricSkinSwatch" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block; border: 1px solid var(--border-color);"></span>
+                <span style="font-size: 0.78rem; color: var(--text-muted);" id="metricSkinToneHex">#DDA57C</span>
+              </div>
+            </div>
+
+            <!-- Undertone Metric -->
+            <div class="metric-card">
+              <div>
+                <span class="metric-card-label">Undertone</span>
+                <div class="metric-card-value" id="metricUndertoneName">Warm ☀️</div>
+                <div class="metric-card-desc" id="metricUndertoneDesc">Harmonious with gold and earth tones</div>
+              </div>
+              <div style="margin-top: 0.85rem; font-size: 0.78rem; color: var(--text-muted);">
+                Best metals: <strong id="metricMetalsShort" style="color: var(--text-secondary);">Gold, Bronze</strong>
+              </div>
+            </div>
+
+            <!-- Style Direction Metric -->
+            <div class="metric-card">
+              <div>
+                <span class="metric-card-label">Style Direction</span>
+                <div class="metric-card-value" style="font-size: 1.35rem;" id="metricStyleDirection">Comfort-First</div>
+                <div class="metric-card-desc" id="metricStyleDirectionDesc">Flexible fit &amp; proportional ease</div>
+              </div>
+              <div style="margin-top: 0.85rem; font-size: 0.78rem; color: var(--text-muted);">
+                Aesthetic: <span id="metricPreferenceName" style="color: var(--text-secondary);">Feminine Styling</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mandatory Body-Positive Disclaimer -->
+          <div class="body-positive-callout" role="note">
+            <strong>Body-Positive Styling Philosophy</strong>
+            <span id="bodyPositiveDisclaimerText">
+              BMI is only a general screening measure. It does not define your body, health, beauty or personal style.
+            </span>
+          </div>
+
+          <!-- SECTION: Color Palette -->
+          <section class="dashboard-section">
+            <div class="section-editorial-header">
+              <span class="section-tag">Harmonic Spectrum</span>
+              <h2>Your Curated Color Palette</h2>
+              <p id="paletteStylingNote">
+                Colors that naturally highlight your skin tone and undertone. Click any color chip to copy the HEX code.
+              </p>
+            </div>
+
+            <!-- BEST Colors -->
+            <div class="palette-subgroup">
+              <h3 class="palette-subgroup-title">
+                Best Harmonious Colors
+                <span class="badge">6–8 recommended shades</span>
+              </h3>
+              <div class="color-swatches-grid" id="paletteBestGrid"></div>
+            </div>
+
+            <!-- ACCENT Colors -->
+            <div class="palette-subgroup">
+              <h3 class="palette-subgroup-title">
+                Statement Accents
+                <span class="badge">2–4 focal colors</span>
+              </h3>
+              <div class="color-swatches-grid" id="paletteAccentGrid"></div>
+            </div>
+
+            <!-- THOUGHTFUL Colors -->
+            <div class="palette-subgroup">
+              <h3 class="palette-subgroup-title">
+                Use Thoughtfully
+                <span class="badge">Pair with harmonious neutrals</span>
+              </h3>
+              <div class="color-swatches-grid" id="paletteThoughtfulGrid"></div>
+            </div>
+          </section>
+
+          <!-- SECTION: Outfit Recommendations -->
+          <section class="dashboard-section">
+            <div class="section-editorial-header">
+              <span class="section-tag">Wardrobe &amp; Occasions</span>
+              <h2>Outfit Recommendations</h2>
+              <p>
+                Silhouettes and styling ideas designed for comfort, ease of movement, and Indian festive occasions.
+              </p>
+            </div>
+
+            <!-- Occasion Tabs -->
+            <div class="tabs-container" role="tablist">
+              <button class="tab-btn active" data-occasion="casual" role="tab" aria-selected="true">
+                Casual &amp; Everyday
+              </button>
+              <button class="tab-btn" data-occasion="formal" role="tab" aria-selected="false">
+                Formal &amp; Workwear
+              </button>
+              <button class="tab-btn" data-occasion="party" role="tab" aria-selected="false">
+                Party &amp; Evening
+              </button>
+              <button class="tab-btn" data-occasion="ethnic" role="tab" aria-selected="false">
+                Traditional / Indian Ethnic
+              </button>
+            </div>
+
+            <div class="outfits-cards-grid" id="outfitsGrid">
+              <!-- Injected by script.js -->
+            </div>
+          </section>
+
+          <!-- SECTION: Color Themes -->
+          <section class="dashboard-section">
+            <div class="section-editorial-header">
+              <span class="section-tag">Curated Moods</span>
+              <h2>Color Themes</h2>
+              <p>Three cohesive color stories you can adopt for effortless mixing and matching.</p>
+            </div>
+
+            <div class="themes-grid" id="themesGrid">
+              <!-- Injected by script.js -->
+            </div>
+          </section>
+
+          <!-- SECTION: Hairstyles & Hair Color -->
+          <section class="dashboard-section">
+            <div class="section-editorial-header">
+              <span class="section-tag">Grooming &amp; Hair</span>
+              <h2>Hairstyles &amp; Hair Color</h2>
+              <p>Non-prescriptive ideas to explore based on hair length preference and your undertone warmth.</p>
+            </div>
+
+            <div class="hair-layout-grid">
+              <!-- Hairstyle length tabs & ideas -->
+              <div class="hairstyles-box">
+                <div class="tabs-container" style="margin-bottom: 1.25rem;">
+                  <button class="tab-btn active" data-hairlength="short">Short</button>
+                  <button class="tab-btn" data-hairlength="medium">Medium</button>
+                  <button class="tab-btn" data-hairlength="long">Long</button>
+                </div>
+                <div id="hairstylesList" class="options-stack">
+                  <!-- Injected by script.js -->
+                </div>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1.25rem; font-style: italic;">
+                  * Choose based on your personal preference and maintenance comfort.
+                </p>
+              </div>
+
+              <!-- Hair Color Ideas -->
+              <div class="hair-colors-box">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem;">Hair Colors for Your Undertone</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                  Shades that complement your undertone without washing out natural contrast.
+                </p>
+                <div class="hair-colors-list" id="hairColorsList">
+                  <!-- Injected by script.js -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION: Accessories (Jewelry, Bags, Footwear) -->
+          <section class="dashboard-section">
+            <div class="section-editorial-header">
+              <span class="section-tag">Finishing Touches</span>
+              <h2>Jewelry, Bags &amp; Footwear</h2>
+              <p>Complementary metals, handcrafted bags, and traditional Indian footwear pairings.</p>
+            </div>
+
+            <div class="accessories-grid">
+              <!-- Jewelry -->
+              <div class="accessory-card">
+                <div class="accessory-card-header">
+                  <div class="accessory-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Jewelry &amp; Metals</h3>
+                    <span id="accessoryJewelryMetals" style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;">Gold &amp; Warm Brass</span>
+                  </div>
+                </div>
+                <p id="accessoryJewelryDesc" style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                  Warm metals amplify your natural golden undertones.
+                </p>
+                <ul class="accessory-list" id="accessoryJewelryList"></ul>
+              </div>
+
+              <!-- Bags -->
+              <div class="accessory-card">
+                <div class="accessory-card-header">
+                  <div class="accessory-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Bags &amp; Potlis</h3>
+                    <span style="font-size: 0.8rem; color: var(--accent-primary); font-weight: 600;">Palette-Toned</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                  Handcrafted potlis and contemporary leather/canvas silhouettes that harmonize with your outfits.
+                </p>
+                <ul class="accessory-list" id="accessoryBagsList"></ul>
+              </div>
+
+              <!-- Footwear -->
+              <div class="accessory-card">
+                <div class="accessory-card-header">
+                  <div class="accessory-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 14l8 4 8-4"></path>
+                      <path d="M4 10l8 4 8-4"></path>
+                      <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Footwear Essentials</h3>
+                    <span style="font-size: 0.8rem; color: var(--accent-jewel); font-weight: 600;">Traditional &amp; Modern</span>
+                  </div>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                  Handcrafted Juttis, Kolhapuris, and comfortable modern essentials for effortless styling.
+                </p>
+                <ul class="accessory-list" id="accessoryFootwearList"></ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <p class="footer-quote">"True style is not about conforming to rules, but discovering what brings you joy and comfort."</p>
+        <p style="margin-bottom: 0.5rem;">
+          <strong>StyleSense</strong> — Private, browser-only BMI + Skin Tone Style Guide.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.78rem;">
+          100% Client-Side • Zero Data Collection • Free &amp; Open Source
+        </p>
+      </div>
+    </footer>
+
+    <!-- Toast Notification for Copying Hex -->
+    <div id="toastNotice" class="toast-notice" role="status" aria-live="polite">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toastNoticeText">Color hex copied to clipboard</span>
+    </div>
+
+    <!-- Modal: "How It Works" -->
+    <div id="modalHowItWorks" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-dialog">
+        <button id="btnCloseModal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+        <span style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-primary);">Behind the Guide</span>
+        <h2 id="modalTitle" style="font-size: 1.75rem; margin: 0.35rem 0 1.25rem;">How StyleSense Works</h2>
+        
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; display: grid; gap: 1rem;">
+          <p>
+            <strong>1. Input &amp; Gentle Proportions:</strong> You enter your age, height, weight, and styling preference. Your BMI is computed strictly in your browser to help suggest breathable, comfortable silhouette lines. We explicitly provide non-judgmental guidance and separate handling for users under 18.
+          </p>
+          <p>
+            <strong>2. Skin Tone &amp; Undertone Harmony:</strong> Selecting your skin depth (from Fair to Deep across seven inclusive South Asian &amp; global tones) and undertone (Warm, Cool, or Neutral) unlocks color theory harmonies grounded in natural contrast.
+          </p>
+          <p>
+            <strong>3. Rule-Based Local Recommendations:</strong> Our comprehensive local dataset (<code>data.js</code>) instantly assembles your tailored color palette, Indian ethnic and contemporary outfits, jewelry metals, bags, footwear, and hairstyles.
+          </p>
+          <p>
+            <strong>4. Total Privacy Guarantee:</strong> No logins, no tracking, no servers, and no external AI calls. Your data never leaves your device.
+          </p>
+        </div>
+
+        <div style="margin-top: 1.75rem; text-align: right;">
+          <button id="btnModalUnderstood" class="btn btn-primary btn-sm">Got it</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Scripts -->
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>

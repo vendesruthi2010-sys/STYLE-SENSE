@@ -1,0 +1,7 @@
+{
+  "name": "StyleSense — BMI + Skin Tone Style Guide",
+  "description": "Discover personalized color palettes, Indian ethnic and contemporary outfits, jewelry, footwear, and hairstyle ideas based on BMI and skin tone. 100% private and browser-based.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
